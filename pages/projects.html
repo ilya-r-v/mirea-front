@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои проекты - Портфолио Студента</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../images/logo.jpeg" alt="Логотип" class="logo-img">
+                    <span class="student-name">Роднов Илья</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Главная</a></li>
+                    <li><a href="projects.html" class="nav-link active">Проекты</a></li>
+                    <li><a href="diary.html" class="nav-link">Дневник</a></li>
+                    <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="projects-section">
+            <div class="container">
+                <h1>Мои проекты</h1>
+                
+                <div class="projects-filter">
+                    <button class="filter-btn active" data-filter="all">Все</button>
+                    <button class="filter-btn" data-filter="html">HTML</button>
+                    <button class="filter-btn" data-filter="js">JavaScript</button>
+                    <button class="filter-btn" data-filter="react">React</button>
+                </div>
+                
+                <div class="projects-grid">
+                    <div class="project-card" data-category="html">
+                        <div class="project-image">
+                            <div class="project-placeholder">Личный сайт</div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Личный сайт</h3>
+                            <p class="project-tech">HTML, CSS</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-category="js">
+                        <div class="project-image">
+                            <div class="project-placeholder">Todo-приложение</div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Todo-приложение</h3>
+                            <p class="project-tech">JavaScript</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-category="react">
+                        <div class="project-image">
+                            <div class="project-placeholder">Интернет-магазин</div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Интернет-магазин</h3>
+                            <p class="project-tech">React</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-category="html">
+                        <div class="project-image">
+                            <div class="project-placeholder">Портфолио</div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Портфолио</h3>
+                            <p class="project-tech">Bootstrap</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Модальное окно для деталей проекта -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <h2 id="modal-title">Название проекта</h2>
+                <div class="modal-tech" id="modal-tech">Технологии</div>
+                <p id="modal-description">Описание проекта появится здесь.</p>
+                <div class="modal-links">
+                    <a href="#" id="modal-live" class="modal-link" target="_blank">Посмотреть живую версию</a>
+                    <a href="#" id="modal-code" class="modal-link" target="_blank">Исходный код</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Контакты</p>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/projects.js"></script>
+</body>
+</html>

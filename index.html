@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио Студента</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/main.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../images/logo.jpeg" alt="Логотип" class="logo-img">
+                    <span class="student-name">Роднов Илья</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Главная</a></li>
+                    <li><a href="./pages/projects.html" class="nav-link">Проекты</a></li>
+                    <li><a href="./pages/diary.html" class="nav-link">Дневник</a></li>
+                    <li><a href="./pages/contacts.html" class="nav-link">Контакты</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Привет! Я студент<br>группы ЭФБО-02-24</h1>
+                    <p>Увлекаюсь веб-разработкой</p>
+                    <a href="../assets/resume.pdf" download class="btn-download">Скачать резюме</a>
+                </div>
+                <div class="hero-image">
+                    <img src="../images/photo.jpeg" alt="Фото студента" class="student-photo">
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section">
+            <div class="container">
+                <h2>Мои навыки</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <span class="skill-name">HTML/CSS</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="90"></div>
+                        </div>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">TS</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="80"></div>
+                        </div>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Angular</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="85"></div>
+                        </div>
+                        <span class="skill-percent">85%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">RXJS</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="60"></div>
+                        </div>
+                        <span class="skill-percent">60%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-preview">
+            <div class="container">
+                <h2>Лучшие проекты</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-placeholder">П1</div>
+                        <h3>Личный сайт</h3>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-placeholder">П2</div>
+                        <h3>Todo-приложение</h3>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-placeholder">П3</div>
+                        <h3>Интернет-магазин</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Контакты</p>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учебный дневник - Портфолио Студента</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../images/logo.jpeg" alt="Логотип" class="logo-img">
+                    <span class="student-name">Роднов Илья</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Главная</a></li>
+                    <li><a href="projects.html" class="nav-link">Проекты</a></li>
+                    <li><a href="diary.html" class="nav-link active">Дневник</a></li>
+                    <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="diary-section">
+            <div class="container">
+                <h1>Мой учебный прогресс</h1>
+                
+                <div class="diary-content">
+                    <div class="progress-log">
+                        <h2>Прогресс обучения</h2>
+                        <div class="progress-list">
+                            <div class="progress-item completed">
+                                <span class="progress-date">31 окт</span>
+                                <span class="progress-task">Сдача бд</span>
+                                <span class="progress-status">✓</span>
+                            </div>
+                            <div class="progress-item completed">
+                                <span class="progress-date">9 неделя</span>
+                                <span class="progress-task">Сдача фронта</span>
+                                <span class="progress-status">✓</span>
+                            </div>
+                            <div class="progress-item in-progress">
+                                <span class="progress-date">3 ноября</span>
+                                <span class="progress-task">Контрольная</span>
+                                <span class="progress-status">in progress</span>
+                            </div>
+                            <div class="progress-item in-progress">
+                                <span class="progress-date">15 ноября</span>
+                                <span class="progress-task">Подготовка к кр по матану</span>
+                                <span class="progress-status">in progress</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-add-entry">Добавить запись</button>
+                    </div>
+                    
+                    <div class="current-courses">
+                        <h2>Текущие курсы</h2>
+                        <div class="courses-list">
+                            <div class="course-item">
+                                <span class="course-name">Golang</span>
+                                <div class="course-progress-bar">
+                                    <div class="course-progress-fill" style="width: 90%"></div>
+                                </div>
+                                <span class="course-percent">90%</span>
+                            </div>
+                            <div class="course-item">
+                                <span class="course-name">Node.js</span>
+                                <div class="course-progress-bar">
+                                    <div class="course-progress-fill" style="width: 70%"></div>
+                                </div>
+                                <span class="course-percent">70%</span>
+                            </div>
+                            <div class="course-item">
+                                <span class="course-name">RXJS</span>
+                                <div class="course-progress-bar">
+                                    <div class="course-progress-fill" style="width: 50%"></div>
+                                </div>
+                                <span class="course-percent">50%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Контакты</p>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+</body>
+</html>

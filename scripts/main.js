@@ -12,114 +12,156 @@ function animateProgressBars() {
     });
 }
 
-// Фильтрация проектов
+// Функция для фильтрации проектов
 function initProjectFilter() {
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card-full');
-    
+    const projectCards = document.querySelectorAll('.project-card');
+
+    // Обработчик клика на кнопки фильтра
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Убираем активный класс у всех кнопок
+            // Убираем активный класс со всех кнопок
             filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Добавляем активный класс текущей кнопке
+            // Добавляем активный класс на clicked кнопку
             button.classList.add('active');
             
-            const filter = button.getAttribute('data-filter');
+            const filterValue = button.getAttribute('data-filter');
             
+            // Фильтруем проекты
             projectCards.forEach(card => {
-                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                const category = card.getAttribute('data-category');
+                
+                if (filterValue === 'all' || category === filterValue) {
                     card.style.display = 'block';
+                    // Анимация появления
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 50);
                 } else {
-                    card.style.display = 'none';
+                    // Анимация исчезновения
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
                 }
             });
         });
     });
 }
 
+// Инициализация фильтрации при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    initProjectFilter();
+    
+    // Добавляем CSS для анимаций
+    const style = document.createElement('style');
+    style.textContent = `
+        .project-card {
+            transition: all 0.3s ease-in-out;
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+});
+
 // Модальное окно проектов
 function initProjectModals() {
-    const modal = document.getElementById('projectModal');
-    const closeBtn = document.querySelector('.close');
+    const modal = document.getElementById('project-modal'); // Исправлен ID
+    const closeBtn = document.querySelector('.close-modal');
     const viewButtons = document.querySelectorAll('.btn-view');
     
-    // Данные проектов
+    // Данные проектов (обновленные под ваши проекты)
     const projectsData = {
         1: {
-            title: "Личный сайт",
-            description: "Полностью адаптивный личный сайт-портфолио, разработанный с использованием современных технологий веб-разработки.",
-            technologies: ["HTML5", "CSS3", "JavaScript"],
-            features: ["Адаптивный дизайн", "Интерактивные элементы", "Оптимизация производительности"],
+            title: "Сайт с прошлых занятий",
+            description: "Учебный проект на Angular, разработанный в рамках занятий. Включает в себя современный интерфейс и функциональность на TypeScript.",
+            technologies: "Angular, TypeScript, HTML, SCSS",
             demoLink: "#",
-            codeLink: "#"
+            codeLink: "https://github.com/ilya-r-v/mirea-angular"
         },
         2: {
-            title: "Todo-приложение",
-            description: "Интуитивное приложение для управления задачами с возможностью добавления, редактирования и удаления задач.",
-            technologies: ["JavaScript", "Local Storage", "CSS3"],
-            features: ["Добавление/удаление задач", "Фильтрация по статусу", "Локальное сохранение данных"],
+            title: "Курсовая работа на C++",
+            description: "Приложение для управления финансами, разработанное на C++ с использованием Qt Creator. Включает графический интерфейс и систему учета финансов.",
+            technologies: "C++, Qt Creator",
             demoLink: "#",
-            codeLink: "#"
+            codeLink: "https://github.com/ilya-r-v/financilal_management"
         },
         3: {
             title: "Интернет-магазин",
-            description: "Полнофункциональный интернет-магазин с системой корзины покупок и оформлением заказа.",
-            technologies: ["React", "Node.js", "MongoDB"],
-            features: ["Каталог товаров", "Корзина покупок", "Система аутентификации"],
+            description: "Pet-протет на Angular - полнофункциональный интернет-магазин с системой корзины, каталогом товаров и пользовательским интерфейсом.",
+            technologies: "Angular, HTML, TypeScript",
             demoLink: "#",
-            codeLink: "#"
+            codeLink: "https://github.com/ilya-r-v/pet-project-angular"
         },
         4: {
-            title: "Портфолио на Bootstrap",
-            description: "Современное портфолио, построенное на фреймворке Bootstrap с использованием готовых компонентов.",
-            technologies: ["Bootstrap 5", "HTML5", "CSS3"],
-            features: ["Адаптивная сетка", "Готовые компоненты", "Быстрая разработка"],
+            title: "Портфолио",
+            description: "Современное веб-портфолио, построенное на Bootstrap. Адаптивный дизайн, кроссбраузерная совместимость и оптимизация.",
+            technologies: "Bootstrap, HTML, CSS, JavaScript",
             demoLink: "#",
             codeLink: "#"
         }
     };
     
+    // Обработчики для кнопок "Подробнее"
     viewButtons.forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation(); // Предотвращаем всплытие события
+            
             const projectId = button.getAttribute('data-project');
             const project = projectsData[projectId];
             
-            if (project) {
-                const modalContent = document.getElementById('modalContent');
-                modalContent.innerHTML = `
-                    <h2>${project.title}</h2>
-                    <p class="project-modal-description">${project.description}</p>
-                    
-                    <div class="project-details">
-                        <h3>Технологии:</h3>
-                        <div class="tech-tags">
-                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                        </div>
-                        
-                        <h3>Основные функции:</h3>
-                        <ul class="features-list">
-                            ${project.features.map(feature => `<li>${feature}</li>`).join('')}
-                        </ul>
-                        
-                        <div class="project-links">
-                            <a href="${project.demoLink}" class="project-link" target="_blank">Демо</a>
-                            <a href="${project.codeLink}" class="project-link" target="_blank">Исходный код</a>
-                        </div>
-                    </div>
-                `;
+            if (project && modal) {
+                // Заполняем модальное окно данными
+                document.getElementById('modal-title').textContent = project.title;
+                document.getElementById('modal-tech').textContent = project.technologies;
+                document.getElementById('modal-description').textContent = project.description;
+                document.getElementById('modal-live').href = project.demoLink;
+                document.getElementById('modal-code').href = project.codeLink;
                 
+                // Показываем модальное окно
                 modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Блокируем прокрутку фона
             }
         });
     });
     
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
+    // Закрытие модального окна
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Восстанавливаем прокрутку
+        });
+    }
     
+    // Закрытие при клике вне модального окна
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Закрытие по клавише Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
     });
 }

@@ -93,14 +93,6 @@ function initProjectModals() {
                 document.getElementById('modal-tech').textContent = project.technologies;
                 document.getElementById('modal-description').textContent = project.description;
                 
-                const featuresList = document.getElementById('modal-features');
-                featuresList.innerHTML = '';
-                project.features.forEach(feature => {
-                    const li = document.createElement('li');
-                    li.textContent = feature;
-                    featuresList.appendChild(li);
-                });
-                
                 const githubLink = document.getElementById('modal-github-link');
                 
                 if (project.githubLink && project.githubLink !== '#') {

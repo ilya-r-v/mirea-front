@@ -33,7 +33,7 @@
                     <button class="filter-btn active" data-filter="all">Все</button>
                     <button class="filter-btn" data-filter="angular">Angular</button>
                     <button class="filter-btn" data-filter="cpp">C++</button>
-                    <button class="filter-btn" data-filter="react">React</button>
+                    <button class="filter-btn" data-filter="bootstrap">Bootstrap</button>
                 </div>
                 
                 <div class="projects-grid">
@@ -44,13 +44,6 @@
                         <div class="project-info">
                             <h3 class="project-title">Сайт с прошлых занятий</h3>
                             <p class="project-tech">Angular, TS, html, scss</p>
-                            <p class="project-github">
-                                Ссылка на гитхаб: 
-                                <a href="https://github.com/ilya-r-v/mirea-angular" target="_blank" class="github-link">
-                                    Перейти к репозиторию
-                                </a>
-                            </p>
-                            <!-- Добавленная кнопка -->
                             <button class="btn-view" data-project="1">Подробнее</button>
                         </div>
                     </div>
@@ -62,13 +55,6 @@
                         <div class="project-info">
                             <h3 class="project-title">Курсовая работа на c++</h3>
                             <p class="project-tech">C++, qt-creator</p>
-                            <p class="project-github">
-                                Ссылка на гитхаб: 
-                                <a href="https://github.com/ilya-r-v/financilal_management" target="_blank" class="github-link">
-                                    Перейти к репозиторию
-                                </a>
-                            </p>
-                            <!-- Добавленная кнопка -->
                             <button class="btn-view" data-project="2">Подробнее</button>
                         </div>
                     </div>
@@ -80,25 +66,17 @@
                         <div class="project-info">
                             <h3 class="project-title">Интернет-магазин</h3>
                             <p class="project-tech">Angular, html, TS</p>
-                            <p class="project-github">
-                                Ссылка на гитхаб: 
-                                <a href="https://github.com/ilya-r-v/pet-project-angular" target="_blank" class="github-link">
-                                    Перейти к репозиторию
-                                </a>
-                            </p>
-                            <!-- Добавленная кнопка -->
                             <button class="btn-view" data-project="3">Подробнее</button>
                         </div>
                     </div>
                     
-                    <div class="project-card" data-category="react">
+                    <div class="project-card" data-category="bootstrap">
                         <div class="project-image">
                             <div class="project-placeholder">Портфолио</div>
                         </div>
                         <div class="project-info">
                             <h3 class="project-title">Портфолио</h3>
                             <p class="project-tech">Bootstrap</p>
-                            <!-- Добавленная кнопка -->
                             <button class="btn-view" data-project="4">Подробнее</button>
                         </div>
                     </div>
@@ -107,7 +85,6 @@
         </section>
     </main>
 
-    <!-- Модальное окно для деталей проекта -->
     <div id="project-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -115,9 +92,16 @@
                 <h2 id="modal-title">Название проекта</h2>
                 <div class="modal-tech" id="modal-tech">Технологии</div>
                 <p id="modal-description">Описание проекта появится здесь.</p>
+                <div class="project-features">
+                    <h4>Особенности проекта:</h4>
+                    <ul id="modal-features">
+                    </ul>
+                </div>
                 <div class="modal-links">
-                    <a href="#" id="modal-live" class="modal-link" target="_blank">Посмотреть живую версию</a>
-                    <a href="#" id="modal-code" class="modal-link" target="_blank">Исходный код</a>
+                    <a href="#" id="modal-github-link" class="modal-link github-link" target="_blank">
+                        <span class="github-icon">📁</span>
+                        Посмотреть код на GitHub
+                    </a>
                 </div>
             </div>
         </div>

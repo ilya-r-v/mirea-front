@@ -5,13 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мои проекты - Портфолио Студента</title>
     <link rel="stylesheet" href="../styles/styles.css">
+    <style>
+        /* Fix for skip-link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #000;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            z-index: 10000;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: top 0.3s ease;
+        }
+        
+        .skip-link:focus {
+            top: 6px;
+            outline: 2px solid #fff;
+            outline-offset: 2px;
+        }
+
+        /* Make images smaller */
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+
+        /* Focus styles */
+        button:focus-visible,
+        a:focus-visible {
+            outline: 2px solid #007bff;
+            outline-offset: 2px;
+        }
+    </style>
 </head>
 <body>
+    <!-- Skip Link - FIXED -->
+    <a href="#main-content" class="skip-link">Перейти к основному содержимому</a>
+
     <header>
         <nav class="navbar">
             <div class="nav-container">
                 <div class="logo">
-                    <img src="../images/logo.jpeg" alt="Логотип" class="logo-img">
+                    <img src="../images/logo.jpeg" 
+                         alt="Логотип" 
+                         class="logo-img"
+                         width="40" 
+                         height="40"
+                         loading="lazy">
                     <span class="student-name">Роднов Илья</span>
                 </div>
                 <ul class="nav-menu">
@@ -24,59 +69,115 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="projects-section">
             <div class="container">
                 <h1>Мои проекты</h1>
                 
-                <div class="projects-filter">
-                    <button class="filter-btn active" data-filter="all">Все</button>
-                    <button class="filter-btn" data-filter="angular">Angular</button>
-                    <button class="filter-btn" data-filter="cpp">C++</button>
-                    <button class="filter-btn" data-filter="bootstrap">Bootstrap</button>
+                <div class="projects-filter" role="tablist" aria-label="Фильтры проектов">
+                    <button class="filter-btn active" 
+                            data-filter="all" 
+                            role="tab" 
+                            aria-selected="true">Все</button>
+                    <button class="filter-btn" 
+                            data-filter="angular" 
+                            role="tab" 
+                            aria-selected="false">Angular</button>
+                    <button class="filter-btn" 
+                            data-filter="cpp" 
+                            role="tab" 
+                            aria-selected="false">C++</button>
+                    <button class="filter-btn" 
+                            data-filter="bootstrap" 
+                            role="tab" 
+                            aria-selected="false">Bootstrap</button>
                 </div>
                 
                 <div class="projects-grid">
+                    <!-- Project 1 -->
                     <div class="project-card" data-category="angular">
                         <div class="project-image">
-                            <div class="project-placeholder">Личный сайт</div>
+                            <img src="../images/image.png"
+                                 srcset="../images/image.png 400w,
+                                         ../images/image.png 800w"
+                                 sizes="(max-width: 600px) 400px,
+                                        (max-width: 1000px) 800px,
+                                        400px"
+                                 width="400"
+                                 height="200"
+                                 loading="lazy"
+                                 alt="Скриншот личного сайта на Angular"
+                                 class="project-img">
                         </div>
                         <div class="project-info">
                             <h3 class="project-title">Сайт с прошлых занятий</h3>
-                            <p class="project-tech">Angular, TS, html, scss</p>
+                            <p class="project-tech">Angular, TS, HTML, SCSS</p>
                             <button class="btn-view" data-project="1">Подробнее</button>
                         </div>
                     </div>
                     
+                    <!-- Project 2 -->
                     <div class="project-card" data-category="cpp">
                         <div class="project-image">
-                            <div class="project-placeholder">Курсач на c++</div>
+                            <img src="../images/image.png"
+                                 srcset="../images/image.png 400w,
+                                         ../images/image.png 800w"
+                                 sizes="(max-width: 600px) 400px,
+                                        (max-width: 1000px) 800px,
+                                        400px"
+                                 width="400"
+                                 height="200"
+                                 loading="lazy"
+                                 alt="Скриншот курсовой работы на C++"
+                                 class="project-img">
                         </div>
                         <div class="project-info">
-                            <h3 class="project-title">Курсовая работа на c++</h3>
-                            <p class="project-tech">C++, qt-creator</p>
+                            <h3 class="project-title">Курсовая работа на C++</h3>
+                            <p class="project-tech">C++, QT Creator</p>
                             <button class="btn-view" data-project="2">Подробнее</button>
                         </div>
                     </div>
                     
+                    <!-- Project 3 -->
                     <div class="project-card" data-category="angular">
                         <div class="project-image">
-                            <div class="project-placeholder">Интернет-магазин</div>
+                            <img src="../images/image.png"
+                                 srcset="../images/image.png 400w,
+                                         ../images/image.png 800w"
+                                 sizes="(max-width: 600px) 400px,
+                                        (max-width: 1000px) 800px,
+                                        400px"
+                                 width="400"
+                                 height="200"
+                                 loading="lazy"
+                                 alt="Скриншот интернет-магазина на Angular"
+                                 class="project-img">
                         </div>
                         <div class="project-info">
                             <h3 class="project-title">Интернет-магазин</h3>
-                            <p class="project-tech">Angular, html, TS</p>
+                            <p class="project-tech">Angular, HTML, TypeScript</p>
                             <button class="btn-view" data-project="3">Подробнее</button>
                         </div>
                     </div>
                     
+                    <!-- Project 4 -->
                     <div class="project-card" data-category="bootstrap">
                         <div class="project-image">
-                            <div class="project-placeholder">Портфолио</div>
+                            <img src="../images/image.png"
+                                 srcset="../images/image.png 400w,
+                                         ../images/image.png 800w"
+                                 sizes="(max-width: 600px) 400px,
+                                        (max-width: 1000px) 800px,
+                                        400px"
+                                 width="400"
+                                 height="200"
+                                 loading="lazy"
+                                 alt="Скриншот портфолио на Bootstrap"
+                                 class="project-img">
                         </div>
                         <div class="project-info">
                             <h3 class="project-title">Портфолио</h3>
-                            <p class="project-tech">Bootstrap</p>
+                            <p class="project-tech">Bootstrap, CSS, HTML</p>
                             <button class="btn-view" data-project="4">Подробнее</button>
                         </div>
                     </div>
@@ -85,16 +186,16 @@
         </section>
     </main>
 
-    <div id="project-modal" class="modal">
+    <div id="project-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true" hidden>
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <button class="close-modal" aria-label="Закрыть модальное окно">&times;</button>
             <div class="modal-body">
                 <h2 id="modal-title">Название проекта</h2>
                 <div class="modal-tech" id="modal-tech">Технологии</div>
                 <p id="modal-description">Описание проекта появится здесь.</p>
                 <div class="modal-links">
-                    <a href="#" id="modal-github-link" class="modal-link github-link" target="_blank">
-                        <span class="github-icon">📁</span>
+                    <a href="#" id="modal-github-link" class="modal-link github-link" target="_blank" rel="noopener">
+                        <span class="github-icon" aria-hidden="true">📁</span>
                         Посмотреть код на GitHub
                     </a>
                 </div>
@@ -104,10 +205,98 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Контакты</p>
+            <p>&copy; 2025 Роднов Илья</p>
         </div>
     </footer>
 
-    <script src="../scripts/main.js"></script>
+    <script>
+        // Simple modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('project-modal');
+            const closeBtn = document.querySelector('.close-modal');
+            const viewButtons = document.querySelectorAll('.btn-view');
+            
+            // Project data
+            const projects = {
+                1: {
+                    title: "Сайт с прошлых занятий",
+                    tech: "Angular, TypeScript, HTML, SCSS",
+                    description: "Личный сайт разработанный в рамках учебных занятий с использованием Angular фреймворка.",
+                    github: "#"
+                },
+                2: {
+                    title: "Курсовая работа на C++",
+                    tech: "C++, QT Creator",
+                    description: "Курсовая работа реализованная на C++ с использованием QT Creator для создания графического интерфейса.",
+                    github: "#"
+                },
+                3: {
+                    title: "Интернет-магазин",
+                    tech: "Angular, HTML, TypeScript",
+                    description: "Полнофункциональный интернет-магазин с корзиной покупок и системой управления товарами.",
+                    github: "#"
+                },
+                4: {
+                    title: "Портфолио",
+                    tech: "Bootstrap, CSS, HTML",
+                    description: "Адаптивное портфолио с использованием Bootstrap для создания современного дизайна.",
+                    github: "#"
+                }
+            };
+
+            // Open modal
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const projectId = this.getAttribute('data-project');
+                    const project = projects[projectId];
+                    
+                    document.getElementById('modal-title').textContent = project.title;
+                    document.getElementById('modal-tech').textContent = project.tech;
+                    document.getElementById('modal-description').textContent = project.description;
+                    document.getElementById('modal-github-link').href = project.github;
+                    
+                    modal.hidden = false;
+                    modal.style.display = 'block';
+                });
+            });
+
+            // Close modal
+            closeBtn.addEventListener('click', function() {
+                modal.hidden = true;
+                modal.style.display = 'none';
+            });
+
+            // Close modal on outside click
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.hidden = true;
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    projectCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -6,7 +6,7 @@
     <title>Мои проекты - Портфолио Студента</title>
     <link rel="stylesheet" href="../styles/styles.css">
     <style>
-        /* Fix for skip-link */
+        /* Skip Link Styles */
         .skip-link {
             position: absolute;
             top: -40px;
@@ -27,7 +27,14 @@
             outline-offset: 2px;
         }
 
-        /* Make images smaller */
+        /* Focus Visible */
+        button:focus-visible,
+        a:focus-visible {
+            outline: 2px solid #007bff;
+            outline-offset: 2px;
+        }
+
+        /* Responsive Images */
         .project-img {
             width: 100%;
             height: 200px;
@@ -35,16 +42,104 @@
             border-radius: 8px 8px 0 0;
         }
 
-        /* Focus styles */
-        button:focus-visible,
-        a:focus-visible {
-            outline: 2px solid #007bff;
-            outline-offset: 2px;
+        /* Grid Layout */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Filter Buttons Grid */
+        .projects-filter {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1rem;
+            border: 2px solid #007bff;
+            background: white;
+            color: #007bff;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #007bff;
+            color: white;
+        }
+
+        .btn-view {
+            background: #007bff;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .btn-view:hover {
+            background: #0056b3;
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            margin: 0 0 0.5rem 0;
+            color: #333;
+        }
+
+        .project-tech {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-filter {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Skip Link - FIXED -->
+    <!-- Skip Link -->
     <a href="#main-content" class="skip-link">Перейти к основному содержимому</a>
 
     <header>
@@ -106,12 +201,12 @@
                                  width="400"
                                  height="200"
                                  loading="lazy"
-                                 alt="Скриншот личного сайта на Angular"
+                                 alt="Скриншот личного сайта на Angular с адаптивным дизайном"
                                  class="project-img">
                         </div>
                         <div class="project-info">
                             <h3 class="project-title">Сайт с прошлых занятий</h3>
-                            <p class="project-tech">Angular, TS, HTML, SCSS</p>
+                            <p class="project-tech">Angular, TypeScript, HTML, SCSS</p>
                             <button class="btn-view" data-project="1">Подробнее</button>
                         </div>
                     </div>
@@ -128,7 +223,7 @@
                                  width="400"
                                  height="200"
                                  loading="lazy"
-                                 alt="Скриншот курсовой работы на C++"
+                                 alt="Скриншот курсовой работы на C++ с графическим интерфейсом"
                                  class="project-img">
                         </div>
                         <div class="project-info">
@@ -150,7 +245,7 @@
                                  width="400"
                                  height="200"
                                  loading="lazy"
-                                 alt="Скриншот интернет-магазина на Angular"
+                                 alt="Скриншот интернет-магазина на Angular с корзиной покупок"
                                  class="project-img">
                         </div>
                         <div class="project-info">
@@ -172,7 +267,7 @@
                                  width="400"
                                  height="200"
                                  loading="lazy"
-                                 alt="Скриншот портфолио на Bootstrap"
+                                 alt="Скриншот портфолио на Bootstrap с адаптивным дизайном"
                                  class="project-img">
                         </div>
                         <div class="project-info">
@@ -221,25 +316,25 @@
                 1: {
                     title: "Сайт с прошлых занятий",
                     tech: "Angular, TypeScript, HTML, SCSS",
-                    description: "Личный сайт разработанный в рамках учебных занятий с использованием Angular фреймворка.",
+                    description: "Личный сайт разработанный в рамках учебных занятий с использованием Angular фреймворка. Адаптивный дизайн, современный интерфейс.",
                     github: "#"
                 },
                 2: {
                     title: "Курсовая работа на C++",
                     tech: "C++, QT Creator",
-                    description: "Курсовая работа реализованная на C++ с использованием QT Creator для создания графического интерфейса.",
+                    description: "Курсовая работа реализованная на C++ с использованием QT Creator для создания графического интерфейса. Включает базу данных и алгоритмы обработки.",
                     github: "#"
                 },
                 3: {
                     title: "Интернет-магазин",
                     tech: "Angular, HTML, TypeScript",
-                    description: "Полнофункциональный интернет-магазин с корзиной покупок и системой управления товарами.",
+                    description: "Полнофункциональный интернет-магазин с корзиной покупок, системой управления товарами и пользовательскими отзывами. Интеграция с платежными системами.",
                     github: "#"
                 },
                 4: {
                     title: "Портфолио",
                     tech: "Bootstrap, CSS, HTML",
-                    description: "Адаптивное портфолио с использованием Bootstrap для создания современного дизайна.",
+                    description: "Адаптивное портфолио с использованием Bootstrap для создания современного дизайна. Оптимизировано для мобильных устройств и различных экранов.",
                     github: "#"
                 }
             };
@@ -281,9 +376,13 @@
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-selected', 'false');
+                    });
                     // Add active class to clicked button
                     this.classList.add('active');
+                    this.setAttribute('aria-selected', 'true');
                     
                     const filter = this.getAttribute('data-filter');
                     

@@ -5,192 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мои проекты - Портфолио Студента</title>
     <link rel="stylesheet" href="../styles/styles.css">
-    <style>
-        /* Skip Link Styles */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 6px;
-            background: #000;
-            color: white;
-            padding: 8px 12px;
-            text-decoration: none;
-            z-index: 10000;
-            border-radius: 4px;
-            font-weight: bold;
-            transition: top 0.3s ease;
-        }
-        
-        .skip-link:focus {
-            top: 6px;
-            outline: 2px solid #fff;
-            outline-offset: 2px;
-        }
-
-        /* Focus Visible */
-        button:focus-visible,
-        a:focus-visible {
-            outline: 2px solid #007bff;
-            outline-offset: 2px;
-        }
-
-        /* Responsive Images */
-        .project-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px 8px 0 0;
-        }
-
-        /* Grid Layout */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        /* Filter Buttons Grid */
-        .projects-filter {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-            max-width: 500px;
-        }
-
-        .filter-btn {
-            padding: 0.75rem 1rem;
-            border: 2px solid #007bff;
-            background: white;
-            color: #007bff;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-        }
-
-        .filter-btn.active,
-        .filter-btn:hover {
-            background: #007bff;
-            color: white;
-        }
-
-        .btn-view {
-            background: #007bff;
-            color: white;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            width: 100%;
-        }
-
-        .btn-view:hover {
-            background: #0056b3;
-        }
-
-        /* Project Cards */
-        .project-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-        }
-
-        .project-info {
-            padding: 1.5rem;
-        }
-
-        .project-title {
-            margin: 0 0 0.5rem 0;
-            color: #333;
-        }
-
-        .project-tech {
-            color: #666;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .projects-filter {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Skip Link -->
     <a href="#main-content" class="skip-link">Перейти к основному содержимому</a>
 
     <header>
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Основная навигация">
             <div class="nav-container">
                 <div class="logo">
                     <img src="../images/logo.jpeg" 
                          alt="Логотип" 
                          class="logo-img"
                          width="40" 
-                         height="40"
-                         loading="lazy">
+                         height="40">
                     <span class="student-name">Роднов Илья</span>
                 </div>
-                <ul class="nav-menu">
-                    <li><a href="../index.html" class="nav-link">Главная</a></li>
-                    <li><a href="projects.html" class="nav-link active">Проекты</a></li>
-                    <li><a href="diary.html" class="nav-link">Дневник</a></li>
-                    <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+                <ul class="nav-menu" role="menubar">
+                    <li role="none"><a href="../index.html" class="nav-link" role="menuitem">Главная</a></li>
+                    <li role="none"><a href="projects.html" class="nav-link active" aria-current="page" role="menuitem">Проекты</a></li>
+                    <li role="none"><a href="diary.html" class="nav-link" role="menuitem">Дневник</a></li>
+                    <li role="none"><a href="contacts.html" class="nav-link" role="menuitem">Контакты</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
     <main id="main-content">
-        <section class="projects-section">
+        <section class="projects-section" aria-labelledby="projects-heading">
             <div class="container">
-                <h1>Мои проекты</h1>
+                <h1 id="projects-heading">Мои проекты</h1>
                 
-                <div class="projects-filter" role="tablist" aria-label="Фильтры проектов">
+                <div class="projects-filter" role="toolbar" aria-label="Фильтры проектов">
                     <button class="filter-btn active" 
                             data-filter="all" 
-                            role="tab" 
-                            aria-selected="true">Все</button>
+                            aria-pressed="true">Все</button>
                     <button class="filter-btn" 
                             data-filter="angular" 
-                            role="tab" 
-                            aria-selected="false">Angular</button>
+                            aria-pressed="false">Angular</button>
                     <button class="filter-btn" 
                             data-filter="cpp" 
-                            role="tab" 
-                            aria-selected="false">C++</button>
+                            aria-pressed="false">C++</button>
                     <button class="filter-btn" 
                             data-filter="bootstrap" 
-                            role="tab" 
-                            aria-selected="false">Bootstrap</button>
+                            aria-pressed="false">Bootstrap</button>
                 </div>
                 
                 <div class="projects-grid">
                     <!-- Project 1 -->
-                    <div class="project-card" data-category="angular">
+                    <article class="project-card" data-category="angular">
                         <div class="project-image">
                             <img src="../images/image.png"
                                  srcset="../images/image.png 400w,
@@ -200,19 +63,18 @@
                                         400px"
                                  width="400"
                                  height="200"
-                                 loading="lazy"
                                  alt="Скриншот личного сайта на Angular с адаптивным дизайном"
                                  class="project-img">
                         </div>
                         <div class="project-info">
                             <h3 class="project-title">Сайт с прошлых занятий</h3>
                             <p class="project-tech">Angular, TypeScript, HTML, SCSS</p>
-                            <button class="btn-view" data-project="1">Подробнее</button>
+                            <button class="btn-view" data-project="1" aria-expanded="false" aria-controls="project-modal">Подробнее</button>
                         </div>
-                    </div>
+                    </article>
                     
                     <!-- Project 2 -->
-                    <div class="project-card" data-category="cpp">
+                    <article class="project-card" data-category="cpp">
                         <div class="project-image">
                             <img src="../images/image.png"
                                  srcset="../images/image.png 400w,
@@ -222,19 +84,18 @@
                                         400px"
                                  width="400"
                                  height="200"
-                                 loading="lazy"
                                  alt="Скриншот курсовой работы на C++ с графическим интерфейсом"
                                  class="project-img">
                         </div>
                         <div class="project-info">
                             <h3 class="project-title">Курсовая работа на C++</h3>
                             <p class="project-tech">C++, QT Creator</p>
-                            <button class="btn-view" data-project="2">Подробнее</button>
+                            <button class="btn-view" data-project="2" aria-expanded="false" aria-controls="project-modal">Подробнее</button>
                         </div>
-                    </div>
+                    </article>
                     
                     <!-- Project 3 -->
-                    <div class="project-card" data-category="angular">
+                    <article class="project-card" data-category="angular">
                         <div class="project-image">
                             <img src="../images/image.png"
                                  srcset="../images/image.png 400w,
@@ -244,19 +105,18 @@
                                         400px"
                                  width="400"
                                  height="200"
-                                 loading="lazy"
                                  alt="Скриншот интернет-магазина на Angular с корзиной покупок"
                                  class="project-img">
                         </div>
                         <div class="project-info">
                             <h3 class="project-title">Интернет-магазин</h3>
                             <p class="project-tech">Angular, HTML, TypeScript</p>
-                            <button class="btn-view" data-project="3">Подробнее</button>
+                            <button class="btn-view" data-project="3" aria-expanded="false" aria-controls="project-modal">Подробнее</button>
                         </div>
-                    </div>
+                    </article>
                     
                     <!-- Project 4 -->
-                    <div class="project-card" data-category="bootstrap">
+                    <article class="project-card" data-category="bootstrap">
                         <div class="project-image">
                             <img src="../images/image.png"
                                  srcset="../images/image.png 400w,
@@ -266,16 +126,15 @@
                                         400px"
                                  width="400"
                                  height="200"
-                                 loading="lazy"
                                  alt="Скриншот портфолио на Bootstrap с адаптивным дизайном"
                                  class="project-img">
                         </div>
                         <div class="project-info">
                             <h3 class="project-title">Портфолио</h3>
                             <p class="project-tech">Bootstrap, CSS, HTML</p>
-                            <button class="btn-view" data-project="4">Подробнее</button>
+                            <button class="btn-view" data-project="4" aria-expanded="false" aria-controls="project-modal">Подробнее</button>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -348,10 +207,21 @@
                     document.getElementById('modal-title').textContent = project.title;
                     document.getElementById('modal-tech').textContent = project.tech;
                     document.getElementById('modal-description').textContent = project.description;
-                    document.getElementById('modal-github-link').href = project.github;
+                    
+                    const githubLink = document.getElementById('modal-github-link');
+                    githubLink.href = project.github;
+                    
+                    // Update button state
+                    viewButtons.forEach(btn => {
+                        btn.setAttribute('aria-expanded', 'false');
+                    });
+                    this.setAttribute('aria-expanded', 'true');
                     
                     modal.hidden = false;
                     modal.style.display = 'block';
+                    
+                    // Focus management
+                    closeBtn.focus();
                 });
             });
 
@@ -359,6 +229,13 @@
             closeBtn.addEventListener('click', function() {
                 modal.hidden = true;
                 modal.style.display = 'none';
+                
+                // Return focus to the button that opened the modal
+                const expandedButton = document.querySelector('.btn-view[aria-expanded="true"]');
+                if (expandedButton) {
+                    expandedButton.setAttribute('aria-expanded', 'false');
+                    expandedButton.focus();
+                }
             });
 
             // Close modal on outside click
@@ -366,6 +243,25 @@
                 if (event.target === modal) {
                     modal.hidden = true;
                     modal.style.display = 'none';
+                    
+                    const expandedButton = document.querySelector('.btn-view[aria-expanded="true"]');
+                    if (expandedButton) {
+                        expandedButton.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+
+            // Close modal on Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && !modal.hidden) {
+                    modal.hidden = true;
+                    modal.style.display = 'none';
+                    
+                    const expandedButton = document.querySelector('.btn-view[aria-expanded="true"]');
+                    if (expandedButton) {
+                        expandedButton.setAttribute('aria-expanded', 'false');
+                        expandedButton.focus();
+                    }
                 }
             });
 
@@ -378,11 +274,11 @@
                     // Remove active class from all buttons
                     filterButtons.forEach(btn => {
                         btn.classList.remove('active');
-                        btn.setAttribute('aria-selected', 'false');
+                        btn.setAttribute('aria-pressed', 'false');
                     });
                     // Add active class to clicked button
                     this.classList.add('active');
-                    this.setAttribute('aria-selected', 'true');
+                    this.setAttribute('aria-pressed', 'true');
                     
                     const filter = this.getAttribute('data-filter');
                     

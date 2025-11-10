@@ -6,7 +6,7 @@
     <title>Контакты - Портфолио</title>
     <link rel="stylesheet" href="../styles/styles.css">
     <style>
-        /* Skip Link Styles */
+    
         .skip-link {
             position: absolute;
             top: -40px;
@@ -27,16 +27,16 @@
             outline-offset: 2px;
         }
 
-        /* Focus Visible */
+
         button:focus-visible,
         a:focus-visible,
         input:focus-visible,
         textarea:focus-visible {
-            outline: 2px solid #007bff;
+            outline: 2px solid #0056b3;
             outline-offset: 2px;
         }
 
-        /* Grid Layout */
+ 
         .contacts-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -44,7 +44,7 @@
             margin-top: 2rem;
         }
 
-        /* Form Accessibility */
+        
         .form-group {
             margin-bottom: 1.5rem;
         }
@@ -53,24 +53,41 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: bold;
-            color: #333;
+            color: #1a1a1a;
+        }
+
+        .required-asterisk {
+            color: #b91c1c;
+            font-weight: bold;
         }
 
         .form-input,
         .form-textarea {
             width: 100%;
             padding: 0.75rem;
-            border: 2px solid #ddd;
+            border: 2px solid #666; 
             border-radius: 4px;
             font-family: inherit;
             font-size: 1rem;
             transition: border-color 0.3s, box-shadow 0.3s;
+            background: #fff;
+            color: #1a1a1a;
         }
 
         .form-input:focus,
         .form-textarea:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+            border-color: #0056b3; 
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+        }
+
+        .form-input.error,
+        .form-textarea.error {
+            border-color: #b91c1c; 
+            box-shadow: 0 0 0 2px rgba(185, 28, 28, 0.1);
+        }
+
+        .form-input:valid:not(:placeholder-shown) {
+            border-color: #166534; 
         }
 
         .form-textarea {
@@ -79,14 +96,15 @@
         }
 
         .error-message {
-            color: #dc3545;
+            color: #b91c1c;
             font-size: 0.875rem;
             margin-top: 0.25rem;
             display: block;
+            font-weight: 500;
         }
 
         .btn-submit {
-            background: #007bff;
+            background: #0056b3; 
             color: white;
             padding: 0.75rem 2rem;
             border: none;
@@ -95,14 +113,56 @@
             cursor: pointer;
             transition: background-color 0.3s;
             width: 100%;
+            font-weight: 600;
         }
 
         .btn-submit:hover {
-            background: #0056b3;
+            background: #004494; 
         }
 
         .btn-submit:active {
             transform: translateY(1px);
+        }
+  
+    .navbar {
+        background: #f8f9fa; 
+    }
+
+    .nav-link {
+        color: #1a1a1a; 
+        font-weight: 500;
+    }
+
+    .nav-link.active {
+        color: #0056b3;
+        font-weight: 600;
+        background: rgba(0, 86, 179, 0.1);
+        border-radius: 4px;
+    }
+
+    .nav-link:hover {
+        color: #004494; /* Darker on hover */
+    }
+
+    /* Ensure student name has good contrast too */
+    .student-name {
+        color: #1a1a1a;
+        font-weight: 600;
+    }
+
+        /* Fieldset and Legend Styles */
+        fieldset {
+            border: 1px solid #666; /* Improved contrast: was #ddd */
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        legend {
+            font-weight: bold;
+            padding: 0 0.5rem;
+            color: #1a1a1a; /* Improved contrast: was #333 */
+            background: #fff;
         }
 
         /* Contact Info Grid */
@@ -119,11 +179,39 @@
             padding: 1rem;
             background: #f8f9fa;
             border-radius: 8px;
-            border-left: 4px solid #007bff;
+            border-left: 4px solid #0056b3; /* Improved contrast: was #007bff */
+        }
+
+        .contact-item strong {
+            color: #1a1a1a; /* Ensure good contrast */
+        }
+
+        .contact-item span:not(.contact-icon) {
+            color: #333; /* Ensure good contrast */
         }
 
         .contact-icon {
             font-size: 1.5rem;
+        }
+
+        /* Screen Reader Only */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Placeholder contrast */
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #666; /* Improved contrast for placeholders */
+            opacity: 1; /* Ensure opacity doesn't reduce contrast */
         }
 
         @media (max-width: 768px) {
@@ -172,40 +260,61 @@
                 <h1>Свяжитесь со мной</h1>
                 <div class="contacts-content">
                     <form class="contact-form" id="contactForm" novalidate>
-                        <div class="form-group">
-                            <label for="name" class="form-label">Имя:</label>
-                            <input type="text" 
-                                   id="name" 
-                                   name="name" 
-                                   class="form-input"
-                                   required
-                                   aria-describedby="nameError"
-                                   placeholder="Введите ваше имя">
-                            <span class="error-message" id="nameError" aria-live="polite"></span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email:</label>
-                            <input type="email" 
-                                   id="email" 
-                                   name="email" 
-                                   class="form-input"
-                                   required
-                                   aria-describedby="emailError"
-                                   placeholder="example@mail.com">
-                            <span class="error-message" id="emailError" aria-live="polite"></span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" class="form-label">Сообщение:</label>
-                            <textarea id="message" 
-                                      name="message" 
-                                      class="form-textarea"
-                                      required
-                                      aria-describedby="messageError"
-                                      placeholder="Напишите ваше сообщение..."></textarea>
-                            <span class="error-message" id="messageError" aria-live="polite"></span>
-                        </div>
+                        <fieldset>
+                            <legend>Контактная информация</legend>
+                            
+                            <div class="form-group">
+                                <label for="name" class="form-label">
+                                    Имя: <span class="required-asterisk" aria-hidden="true">*</span>
+                                    <span class="sr-only">обязательное поле</span>
+                                </label>
+                                <input type="text" 
+                                       id="name" 
+                                       name="name" 
+                                       class="form-input"
+                                       required
+                                       aria-required="true"
+                                       aria-invalid="false"
+                                       aria-describedby="nameError nameHint"
+                                       placeholder="Введите ваше имя">
+                                <span class="error-message" id="nameError" aria-live="polite"></span>
+                                <span id="nameHint" class="sr-only">Имя должно содержать минимум 2 символа</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">
+                                    Email: <span class="required-asterisk" aria-hidden="true">*</span>
+                                    <span class="sr-only">обязательное поле</span>
+                                </label>
+                                <input type="email" 
+                                       id="email" 
+                                       name="email" 
+                                       class="form-input"
+                                       required
+                                       aria-required="true"
+                                       aria-invalid="false"
+                                       aria-describedby="emailError"
+                                       placeholder="example@mail.com">
+                                <span class="error-message" id="emailError" aria-live="polite"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">
+                                    Сообщение: <span class="required-asterisk" aria-hidden="true">*</span>
+                                    <span class="sr-only">обязательное поле</span>
+                                </label>
+                                <textarea id="message" 
+                                          name="message" 
+                                          class="form-textarea"
+                                          required
+                                          aria-required="true"
+                                          aria-invalid="false"
+                                          aria-describedby="messageError messageHint"
+                                          placeholder="Напишите ваше сообщение..."></textarea>
+                                <span class="error-message" id="messageError" aria-live="polite"></span>
+                                <span id="messageHint" class="sr-only">Сообщение должно содержать минимум 10 символов</span>
+                            </div>
+                        </fieldset>
                         
                         <button type="submit" class="btn-submit">Отправить сообщение</button>
                     </form>
@@ -256,20 +365,33 @@
             const emailError = document.getElementById('emailError');
             const messageError = document.getElementById('messageError');
 
+            function setFieldValidity(field, isValid, message) {
+                const errorElement = document.getElementById(field.id + 'Error');
+                field.setAttribute('aria-invalid', !isValid);
+                
+                if (!isValid) {
+                    errorElement.textContent = message;
+                    field.classList.add('error');
+                } else {
+                    errorElement.textContent = '';
+                    field.classList.remove('error');
+                }
+            }
+
             function validateName() {
                 const name = nameInput.value.trim();
                 
                 if (!name) {
-                    nameError.textContent = 'Пожалуйста, введите ваше имя';
+                    setFieldValidity(nameInput, false, 'Пожалуйста, введите ваше имя');
                     return false;
                 }
                 
                 if (name.length < 2) {
-                    nameError.textContent = 'Имя должно содержать минимум 2 символа';
+                    setFieldValidity(nameInput, false, 'Имя должно содержать минимум 2 символа');
                     return false;
                 }
                 
-                nameError.textContent = '';
+                setFieldValidity(nameInput, true, '');
                 return true;
             }
 
@@ -278,16 +400,16 @@
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 
                 if (!email) {
-                    emailError.textContent = 'Пожалуйста, введите email';
+                    setFieldValidity(emailInput, false, 'Пожалуйста, введите email');
                     return false;
                 }
                 
                 if (!emailRegex.test(email)) {
-                    emailError.textContent = 'Пожалуйста, введите корректный email';
+                    setFieldValidity(emailInput, false, 'Пожалуйста, введите корректный email');
                     return false;
                 }
                 
-                emailError.textContent = '';
+                setFieldValidity(emailInput, true, '');
                 return true;
             }
 
@@ -295,22 +417,40 @@
                 const message = messageInput.value.trim();
                 
                 if (!message) {
-                    messageError.textContent = 'Пожалуйста, введите сообщение';
+                    setFieldValidity(messageInput, false, 'Пожалуйста, введите сообщение');
                     return false;
                 }
                 
                 if (message.length < 10) {
-                    messageError.textContent = 'Сообщение должно содержать минимум 10 символов';
+                    setFieldValidity(messageInput, false, 'Сообщение должно содержать минимум 10 символов');
                     return false;
                 }
                 
-                messageError.textContent = '';
+                setFieldValidity(messageInput, true, '');
                 return true;
             }
 
+            // Real-time validation
             nameInput.addEventListener('blur', validateName);
+            nameInput.addEventListener('input', function() {
+                if (this.value.trim().length > 0) {
+                    validateName();
+                }
+            });
+            
             emailInput.addEventListener('blur', validateEmail);
+            emailInput.addEventListener('input', function() {
+                if (this.value.trim().length > 0) {
+                    validateEmail();
+                }
+            });
+            
             messageInput.addEventListener('blur', validateMessage);
+            messageInput.addEventListener('input', function() {
+                if (this.value.trim().length > 0) {
+                    validateMessage();
+                }
+            });
 
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
@@ -323,6 +463,20 @@
                     // Here would be the code to send the form
                     alert('Сообщение успешно отправлено!');
                     form.reset();
+                    
+                    // Reset ARIA attributes
+                    nameInput.setAttribute('aria-invalid', 'false');
+                    emailInput.setAttribute('aria-invalid', 'false');
+                    messageInput.setAttribute('aria-invalid', 'false');
+                } else {
+                    // Focus first invalid field
+                    if (!isNameValid) {
+                        nameInput.focus();
+                    } else if (!isEmailValid) {
+                        emailInput.focus();
+                    } else if (!isMessageValid) {
+                        messageInput.focus();
+                    }
                 }
             });
         });

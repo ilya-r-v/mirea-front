@@ -11,31 +11,30 @@
     <a href="#main-content" class="skip-link">Перейти к основному содержимому</a>
 
     <header>
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Основная навигация">
             <div class="nav-container">
                 <div class="logo">
                     <img src="../images/logo.jpeg" 
                          alt="Логотип" 
                          class="logo-img"
                          width="40" 
-                         height="40"
-                         loading="lazy">
+                         height="40">
                     <span class="student-name">Роднов Илья</span>
                 </div>
-                <ul class="nav-menu">
-                    <li><a href="../index.html" class="nav-link">Главная</a></li>
-                    <li><a href="projects.html" class="nav-link">Проекты</a></li>
-                    <li><a href="diary.html" class="nav-link active">Дневник</a></li>
-                    <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+                <ul class="nav-menu" role="menubar">
+                    <li role="none"><a href="../index.html" class="nav-link" role="menuitem">Главная</a></li>
+                    <li role="none"><a href="projects.html" class="nav-link" role="menuitem">Проекты</a></li>
+                    <li role="none"><a href="diary.html" class="nav-link active" aria-current="page" role="menuitem">Дневник</a></li>
+                    <li role="none"><a href="contacts.html" class="nav-link" role="menuitem">Контакты</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
     <main id="main-content">
-        <section class="diary-section">
+        <section class="diary-section" aria-labelledby="diary-heading">
             <div class="container">
-                <h1>Мой учебный прогресс</h1>
+                <h1 id="diary-heading">Мой учебный прогресс</h1>
                 
                 <div class="diary-content">
                     <!-- Progress Log Grid -->
@@ -55,33 +54,38 @@
                             <div class="progress-item in-progress">
                                 <span class="progress-date">3 ноября</span>
                                 <span class="progress-task">Контрольная</span>
-                                <span class="progress-status">in progress</span>
+                                <span class="progress-status" aria-label="В процессе выполнения">in progress</span>
                             </div>
                             <div class="progress-item in-progress">
                                 <span class="progress-date">15 ноября</span>
                                 <span class="progress-task">Подготовка к кр по матану</span>
-                                <span class="progress-status">in progress</span>
+                                <span class="progress-status" aria-label="В процессе выполнения">in progress</span>
                             </div>
                         </div>
                         
                         <form class="add-entry-form" id="addEntryForm">
-                            <div class="form-group">
-                                <label for="entry-date" class="form-label">Дата:</label>
-                                <input type="date" 
-                                       id="entry-date" 
-                                       name="entry-date" 
-                                       class="form-input"
-                                       required>
-                            </div>
-                            <div class="form-group">
-                                <label for="entry-task" class="form-label">Задача:</label>
-                                <input type="text" 
-                                       id="entry-task" 
-                                       name="entry-task" 
-                                       class="form-input"
-                                       required>
-                            </div>
-                            <button type="submit" class="btn-add-entry">Добавить запись</button>
+                            <fieldset>
+                                <legend>Добавить новую задачу</legend>
+                                <div class="form-group">
+                                    <label for="entry-date" class="form-label">Дата:</label>
+                                    <input type="date" 
+                                           id="entry-date" 
+                                           name="entry-date" 
+                                           class="form-input"
+                                           required
+                                           aria-required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="entry-task" class="form-label">Задача:</label>
+                                    <input type="text" 
+                                           id="entry-task" 
+                                           name="entry-task" 
+                                           class="form-input"
+                                           required
+                                           aria-required="true">
+                                </div>
+                                <button type="submit" class="btn-add-entry">Добавить запись</button>
+                            </fieldset>
                         </form>
                     </div>
                     
@@ -92,7 +96,8 @@
                             <div class="course-item">
                                 <span class="course-name">Golang</span>
                                 <div class="course-progress-bar" role="progressbar" 
-                                     aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                     aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"
+                                     aria-label="Прогресс курса Golang: 90%">
                                     <div class="course-progress-fill" style="width: 90%"></div>
                                 </div>
                                 <span class="course-percent">90%</span>
@@ -100,7 +105,8 @@
                             <div class="course-item">
                                 <span class="course-name">Node.js</span>
                                 <div class="course-progress-bar" role="progressbar" 
-                                     aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                                     aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+                                     aria-label="Прогресс курса Node.js: 70%">
                                     <div class="course-progress-fill" style="width: 70%"></div>
                                 </div>
                                 <span class="course-percent">70%</span>
@@ -108,7 +114,8 @@
                             <div class="course-item">
                                 <span class="course-name">RXJS</span>
                                 <div class="course-progress-bar" role="progressbar" 
-                                     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+                                     aria-label="Прогресс курса RXJS: 50%">
                                     <div class="course-progress-fill" style="width: 50%"></div>
                                 </div>
                                 <span class="course-percent">50%</span>
@@ -122,7 +129,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Контакты</p>
+            <p>&copy; 2025 Роднов Илья</p>
         </div>
     </footer>
 
